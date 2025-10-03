@@ -44,7 +44,7 @@ try:
 
     # Plot chart
     st.subheader("Average Price by Area")
-    st.bar_chart(data=df.set_index("neighbourhood)["price"])
+    st.bar_chart(data=df.set_index("neighbourhood")["price"])
 
 except Exception as e:
     st.error(f"Error processing file: {e}")
