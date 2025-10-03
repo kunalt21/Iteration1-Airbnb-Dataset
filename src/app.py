@@ -25,9 +25,9 @@ try:
     df.columns = [col.strip().lower() for col in df.columns]
 
     # Validate required columns
-    required_columns = {"area name", "avg price"}
+    required_columns = {"neighbourhood", "price"}
     if not required_columns.issubset(set(df.columns)):
-        st.error("CSV must contain 'area name' and 'avg price' columns.")
+        st.error("CSV must contain 'neighbourhood' and 'price columns.")
         st.stop()
 
     # Show DataFrame
@@ -35,8 +35,8 @@ try:
     st.dataframe(df)
 
     # Convert avg price to numeric
-    df["avg price"] = pd.to_numeric(df["avg price"], errors="coerce")
-    df = df.dropna(subset=["avg price"])
+    df["price"] = pd.to_numeric(df["price"], errors="coerce")
+    df = df.dropna(subset=["price"])
 
     # Show summary stats
     st.subheader("Summary Statistics")
@@ -44,7 +44,7 @@ try:
 
     # Plot chart
     st.subheader("Average Price by Area")
-    st.bar_chart(data=df.set_index("area name")["avg price"])
+    st.bar_chart(data=df.set_index("neighbourhood)["price"])
 
 except Exception as e:
     st.error(f"Error processing file: {e}")
