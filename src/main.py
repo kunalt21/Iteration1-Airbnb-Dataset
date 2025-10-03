@@ -1,7 +1,6 @@
 # lib used
 import os
 
-import matplotlib.pyplot as plt
 import pandas as pd
 
 
@@ -20,4 +19,10 @@ def get_avg_neighbourhood_price(df):
     return avg_price
 
 
-# print(get_avg_neighbourhood_price(get_data()))
+def write_data():
+    get_avg_neighbourhood_price(get_data()).to_csv(
+        os.path.join(os.getcwd(), "data/cal/avg_price.csv")
+    )
+
+
+write_data()
